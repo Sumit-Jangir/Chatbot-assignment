@@ -58,14 +58,13 @@ export const suggestions = [
     },
     {
       id: crypto.randomUUID(),
-      question: "What should I do if my iPhone is frozen and not responding?",
-      answer: `If your iPhone is frozen, try these steps:
+      question: "How do I update my iPhone to the latest iOS version?",
+      answer: `To update your iPhone to the latest iOS:
   
-  1. Force restart:
-     - Quickly press Volume Up
-     - Quickly press Volume Down
-     - Press and hold Power button until Apple logo appears
-  2. If still frozen, check for updates
-  3. As a last resort, try resetting your device`,
+  1. Connect to Wi-Fi
+  2. Go to Settings
+  3. Tap General
+  4. Select Software Update
+  5. Download and Install if an update is available`,
     },
   ];
