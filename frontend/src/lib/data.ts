@@ -15,8 +15,10 @@ export const suggestions = [
       question: "How can I check my iPhone's battery health?",
       answer: `To check your iPhone's battery health, follow these steps:
   
-  1. Go to Settings
-  2. Tap on Battery
+  1. Go to Settings\n
+
+  2. Tap on Battery\n\n
+
   3. Select Battery Health & Charging
   
   Here, you will be able to see the maximum capacity and peak performance capability of your battery. If you have any other questions, feel free to ask!`,

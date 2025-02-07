@@ -56,7 +56,7 @@ export default function LoginForm({ setShowForm, setFormSubmit }: LoginFormProps
   };
 
   return (
-    <Card className="p-4 m-4 max-w-80">
+    <Card className="p-4 m-4 ml-10 max-w-80">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">How can we reach you?</h3>
         <button onClick={() => setShowForm(false)} className="text-gray-400 hover:text-gray-600">

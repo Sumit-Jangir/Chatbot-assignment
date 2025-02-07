@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronLeft, ChevronRight, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {suggestions} from '@/components/SuggestionQue'
+// import {suggestions} from '@/components/SuggestionQue'
+import { suggestions } from "@/lib/data";
 import LoginForm from "../components/LoginForm";
 
 type Message = {
@@ -21,7 +22,7 @@ export default function ChatInterface() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [formSubmit, setFormSubmit]=useState(false)
+  const [formSubmit, setFormSubmit] = useState(false);
 
   const simulateTyping = async (text: string) => {
     setIsTyping(true);
@@ -98,10 +99,9 @@ Is there anything specific you'd like to know more about?`;
       });
     }
   };
-  
 
   return (
-    <div className="max-w-3xl mx-auto p-3 pb-0 min-h-screen flex flex-col">
+    <div className="max-w-3xl mx-auto pr-3 pl-1 pt-7 pb-0 min-h-screen flex flex-col">
       {/* Header */}
       {showSuggestions && (
         <>
@@ -111,7 +111,6 @@ Is there anything specific you'd like to know more about?`;
             </h1>
             <h2 className="text-2xl text-gray-600">How can I help?</h2>
           </div>
-
 
           <div className="relative flex items-center mb-8">
             <button
@@ -155,7 +154,22 @@ Is there anything specific you'd like to know more about?`;
               message.type === "user" ? "justify-end" : "justify-start"
             )}
           >
+            {message.type === "assistant" && message.content && (
+              <div className="mr-1 sm:mr-2 mt-1 pr-1 flex h-8 w-8 items-center justify-center rounded-full bg-black">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 1024 1024"
+                  fill="white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M799 534c0 155 138 207 138 207s-75 214-183 214c-47 0-84-32-125-32-42 0-85 33-132 33-91 2-228-119-228-316 0-153 100-236 198-236 44 0 84 35 126 35s85-35 132-35c28 0 102 5 162 74-48 28-88 104-88 157zM675 80c30 43 49 102 49 163 0 41-8 84-25 117-37 70-97 118-167 113-5-15-10-40-10-71 0-63 22-108 45-140 27-37 66-66 108-66z" />
+                </svg>
+              </div>
+            )}
+
             <div
+            key={message.id}
               className={cn(
                 "max-w-[80%] rounded-lg p-4",
                 message.type === "user"
@@ -164,12 +178,13 @@ Is there anything specific you'd like to know more about?`;
               )}
             >
               {message.content.split("\n").map((line, i) => (
-                <p key={i}>{line}</p>
+                <>
+                  <p key={i}>{line}</p>
+                </>
               ))}
             </div>
           </div>
         ))}
-
       </div>
 
       {/* Contact Form */}
@@ -178,7 +193,7 @@ Is there anything specific you'd like to know more about?`;
       )}
 
       {/* Input Area */}
-      <div className="mt-auto sticky bottom-0 bg-white ">
+      <div className="mt-auto sticky bottom-0 bg-white pl-2">
         <form
           onSubmit={handleSubmit}
           className="flex gap-2 p-2 border border-blue-400 rounded-full focus-within:border-blue-400"
@@ -188,7 +203,7 @@ Is there anything specific you'd like to know more about?`;
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your question about iPhone"
             className="flex-grow border-none shadow-none focus:border-none focus:ring-0 focus:outline-none"
-            style={{ outline: "none", boxShadow: "none" }} 
+            style={{ outline: "none", boxShadow: "none" }}
           />
           <Button
             type="submit"
