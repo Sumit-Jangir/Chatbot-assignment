@@ -21,6 +21,7 @@ export default function ChatInterface() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [formSubmit, setFormSubmit]=useState(false)
 
   const simulateTyping = async (text: string) => {
     setIsTyping(true);
@@ -100,11 +101,11 @@ Is there anything specific you'd like to know more about?`;
   
 
   return (
-    <div className="max-w-3xl mx-auto pt-4 min-h-screen flex flex-col">
+    <div className="max-w-3xl mx-auto p-3 pb-0 min-h-screen flex flex-col">
       {/* Header */}
       {showSuggestions && (
         <>
-          <div className="text-center mb-8">
+          <div className="mb-8 ml-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
               Iphone
             </h1>
@@ -172,12 +173,12 @@ Is there anything specific you'd like to know more about?`;
       </div>
 
       {/* Contact Form */}
-      {showForm && !isTyping && messages.length > 0 && (
-        <LoginForm setShowForm={setShowForm} />
+      {!formSubmit && showForm && !isTyping && messages.length > 0 && (
+        <LoginForm setShowForm={setShowForm} setFormSubmit={setFormSubmit} />
       )}
 
       {/* Input Area */}
-      <div className="mt-auto sticky bottom-0 bg-white">
+      <div className="mt-auto sticky bottom-0 bg-white ">
         <form
           onSubmit={handleSubmit}
           className="flex gap-2 p-2 border border-blue-400 rounded-full focus-within:border-blue-400"
@@ -199,8 +200,7 @@ Is there anything specific you'd like to know more about?`;
           </Button>
         </form>
 
-        {/* Footer */}
-        <div className="mt-4 flex justify-center gap-4 items-center text-sm text-gray-500">
+        <div className="m-2 flex justify-center gap-4 items-center text-sm text-gray-500">
           <span className="text-blue-500 font-semibold">Disclaimer</span>
           <div className="flex items-center gap-2">
             <span>Powered by</span>

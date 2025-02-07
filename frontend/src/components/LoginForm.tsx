@@ -8,9 +8,10 @@ import toast from "react-hot-toast";
 
 interface LoginFormProps {
   setShowForm: (value: boolean) => void;
+  setFormSubmit: (value: boolean) => void;
 }
 
-export default function LoginForm({ setShowForm }: LoginFormProps) {
+export default function LoginForm({ setShowForm, setFormSubmit }: LoginFormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,8 @@ export default function LoginForm({ setShowForm }: LoginFormProps) {
         toast.success(response.data.message)
         setUsername("");
         setPassword("");
-        setTimeout(() => setShowForm(false), 1500);
+       setShowForm(false)
+       setFormSubmit(true)
       }
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
@@ -56,7 +58,7 @@ export default function LoginForm({ setShowForm }: LoginFormProps) {
   return (
     <Card className="p-4 m-4 max-w-80">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">Login</h3>
+        <h3 className="text-lg font-semibold">How can we reach you?</h3>
         <button onClick={() => setShowForm(false)} className="text-gray-400 hover:text-gray-600">
           &times;
         </button>
