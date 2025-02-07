@@ -21,7 +21,7 @@ export default function LoginForm({ setShowForm }: LoginFormProps) {
     setErrors({}); 
 
     // Validation
-    let validationErrors: { username?: string; password?: string } = {};
+    const validationErrors: { username?: string; password?: string } = {};
     if (!username.trim()) validationErrors.username = "Username is required.";
     if (!password.trim()) validationErrors.password = "Password is required.";
     
