@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 
+
 interface LoginFormProps {
   setShowForm: (value: boolean) => void;
 }
@@ -32,7 +33,7 @@ export default function LoginForm({ setShowForm }: LoginFormProps) {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:7000/auth/login", {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/auth/login`, {
         username,
         password,
       });
