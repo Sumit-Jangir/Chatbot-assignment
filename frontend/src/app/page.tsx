@@ -61,8 +61,8 @@ export default function ChatInterface() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setShowSuggestions(false);
     if (!inputValue.trim()) return;
+    setShowSuggestions(false);
 
     const userMessage = inputValue;
     setInputValue("");
@@ -194,7 +194,7 @@ Is there anything specific you'd like to know more about?`;
             type="submit"
             size="icon"
             disabled={isTyping}
-            className="bg-white shadow-none"
+            className="bg-white shadow-none hover:bg-transparent"
           >
             <Send className="h-4 w-4 text-blue-500 rotate-[40deg]" />
           </Button>
